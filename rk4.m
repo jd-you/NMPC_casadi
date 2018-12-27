@@ -1,8 +1,11 @@
-function x_next = rk4(ode, x0, t0, h, u)
-    k1 = h * ode(t0, x0, u);
-    k2 = h * ode(t0 + h / 2, x0 + k1 / 2, u);
-    k3 = h * ode(t0 + h / 2, x0 + k2 / 2, u);
-    k4 = h * ode(t0 + h, x0 + k3, u);
+function x_next = rk4(t, x, u, h, t_opt)
+    if (nargin < 5)
+        t_opt = 1;
+    end
     
-    x_next = x0 + 1 / 6 * (k1 + 2 * k2 + 2 * k3 + k4);
+    k1 = ROBOT_ode(x, u, t, t_opt);
+    k2 = ROBOT_ode(x + k1 * h / 2, u, t + h / 2, t_opt);
+    k3 = ROBOT_ode(x + k2 * h / 2, u, t + h / 2, t_opt);
+    k4 = ROBOT_ode( x + k3 * h, u, t + h, t_opt);
+    x_next = x + (k1 + 2 * k2 + 2 * k3 + k4) * h / 6;
 end
