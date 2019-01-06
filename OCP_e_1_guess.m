@@ -5,7 +5,7 @@ p = params();
 %% define start/end time and sampling rate
 t_f = 1;
 t_0 = 0;
-N = 100;
+N = 50;
 t_s = (t_f - t_0) / N;
 
 %% define decision variables
@@ -22,7 +22,7 @@ x_end = p.x_end;
 
 for i = 1:N
     % continuity constraint
-    x_next = euler(t(end), x(:, i), u(:, i), t_s, t_opt);
+    x_next = euler_robot(t(end), x(:, i), u(:, i), t_s, t_opt);
     opti.subject_to(x(:,i+1) == x_next);
     t = [t, t(end) + t_s];
 end
