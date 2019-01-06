@@ -19,7 +19,7 @@ u_solution_euler = u_opt_100_euler ./ [p.scal_u1; p.scal_u2];
 figure;
 fig1 = gcf;
 fig1.PaperUnits = 'inches';
-fig1.PaperPosition = [0, 0, 8, 8]
+fig1.PaperPosition = [0, 0, 8, 8];
 
 subplot(2, 2, 1);
 axis([0, 3, -5.5, 2]);

@@ -136,4 +136,4 @@ stairs(t(2:length(t)), u_solution(2, :), 'LineWidth', 2);
 xlabel('t/s');
 ylabel('u2/Nm');
 suptitle('inputs');
-print('compromise','-dpng','-r0');
+%print('compromise','-dpng','-r0');
